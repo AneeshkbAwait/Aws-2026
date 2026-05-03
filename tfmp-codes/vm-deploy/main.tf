@@ -1,16 +1,21 @@
 resource "aws_instance" "first" {
-  ami             = local.ami
+  ami             = data.aws_ami.amis.id
   instance_type   = var.instance_type
   key_name        = "tfm-key"
-  security_groups = ["sg-0f14c077df77baf3d"]
-  tags = {
-    name = "first-instance"
-  }
+  security_groups = local.security-groups
+  tags = var.tags
 
 }
 
 data "aws_ami" "amis" {
-  name_regex = "^al2023-ami-2023.-[0-9]{3}"
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*"]
+  }
+
 }
 
 output "myami" {
