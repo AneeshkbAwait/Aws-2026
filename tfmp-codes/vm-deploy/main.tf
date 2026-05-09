@@ -1,9 +1,10 @@
 resource "aws_instance" "first" {
+  for_each        = var.instances
   ami             = data.aws_ami.amis.id
-  instance_type   = var.instance_type
-  key_name        = "tfm-key"
+  instance_type   = each.value.instance_type
+  key_name        = each.value.key_name
   security_groups = local.security-groups
-  tags = var.tags
+  tags            = each.value.tags
 
 }
 
