@@ -1,8 +1,18 @@
-# variable "region" {
-#   type        = string
-#   description = "aws region"
-#   default     = "ap-south-1"
-# }
+variable "region" {
+  type        = string
+  description = "aws region"
+  default     = "ap-south-1"
+}
+
+variable "my_access_key" {
+  type = string
+  sensitive = true
+}
+
+variable "my_secret_access_key"{
+  type = string
+  sensitive = true
+}
 
 # # variable "ami" {
 # #   type        = string
