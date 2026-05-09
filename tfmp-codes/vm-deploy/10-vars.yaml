@@ -1,0 +1,15 @@
+vars:
+
+  instances:
+    vm5:
+      instance_type: "t3.micro"
+      key_name: "tfm-key"
+      tags:
+        Name: "vm5"
+        Project: "zomato"
+    vm6:
+      instance_type: "t2.micro"
+      key_name: "tfm-key"
+      tags:
+        Name: "vm6"
+        Project: "uber"
