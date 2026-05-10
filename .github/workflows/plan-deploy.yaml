@@ -1,11 +1,16 @@
-name: "To manage AWS Ec2 infrastructure - apply"
+name: "Plan AWS Ec2 infrastructure"
 
 on:
-  push:
-    branches: ["master"]
+  pull_request:
+    branches-ignore:
+      - master
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
-  deploy:
+  build-test:
     runs-on: "ubuntu-latest"
 
     defaults:
@@ -26,12 +31,12 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform int
+      - name: Terraform init
         run: terraform init
 
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform apply
-        run: terraform apply --auto-approve
+      # - name: Terraform apply
+      #   run: terraform apply --auto-approve
     
