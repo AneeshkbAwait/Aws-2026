@@ -8,6 +8,10 @@ jobs:
   deploy:
     runs-on: "ubuntu-latest"
 
+    defaults:
+      run:
+        working-directory: tfmp-codes/vm-deploy
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
