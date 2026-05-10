@@ -2,7 +2,7 @@ name: "Plan AWS Ec2 infrastructure"
 
 on:
   pull_request:
-    branches-ignore:
+    branches:
       - master
     types:
       - opened
