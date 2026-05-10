@@ -1,0 +1,33 @@
+name: "To manage AWS Ec2 infrastructure"
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  deploy:
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ TF_VAR_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ TF_VAR_AWS_SECRET }}
+          aws-region: ap-south-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform int
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform Plan
+
+      - name: Terraform apply
+        run: terraform apply --auto-approve
+    
