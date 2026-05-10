@@ -4,15 +4,17 @@ variable "region" {
   default     = "ap-south-1"
 }
 
-variable "my_access_key" { # export TF_VAR_my_access_key=$(aws secretsmanager get-secret-value --secret-id AWS_Programmatic_Secrets --query SecretString  --output text | jq -r '.AWS_ACCESS_KEY')
-  type      = string
-  sensitive = true
-}
+# not needed in github actions as secrets are passed in workflow file which will handle it
+# variable "AWS_ACCESS_KEY" { # export TF_VAR_AWS_ACCESS_KEY=$(aws secretsmanager get-secret-value --secret-id AWS_Programmatic_Secrets --query SecretString  --output text | jq -r '.AWS_ACCESS_KEY')
+#   type      = string
+#   sensitive = true
+# }
 
-variable "my_secret_access_key" { #export TF_VAR_my_secret_access_key=$(aws secretsmanager get-secret-value --secret-id AWS_Programmatic_Secrets --query SecretString  --output text | jq -r '.AWS_SECRET')
-  type      = string
-  sensitive = true
-}
+# not needed in github actions as secrets are passed in workflow file which will handle it
+# variable "AWS_SECRET_ACCESS_KEY" { #export TF_VAR_AWS_SECRET_ACCESS_KEY=$(aws secretsmanager get-secret-value --secret-id AWS_Programmatic_Secrets --query SecretString  --output text | jq -r '.AWS_SECRET')
+#   type      = string
+#   sensitive = true
+# }
 
 # # variable "ami" {
 # #   type        = string

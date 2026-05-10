@@ -1,5 +1,5 @@
 provider "aws" {
   region     = var.region
-  access_key = var.my_access_key        # access key
-  secret_key = var.my_secret_access_key # secret
+  # access_key = var.AWS_ACCESS_KEY        # not needed in github actions as secrets are passed in workflow file which will handle it
+  # secret_key = var.AWS_SECRET_ACCESS_KEY # not needed in github actions as secrets are passed in workflow file which will handle it
 }
