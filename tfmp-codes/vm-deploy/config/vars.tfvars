@@ -4,7 +4,7 @@ instances = {
       instance_type = "t3.micro"
       key_name = "tfm-key"
       tags = {
-        Name = "vm3"
+        Name = "vm3t"
         Project = "zomato"
       }
     }
