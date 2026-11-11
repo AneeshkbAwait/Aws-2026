@@ -1,9 +1,9 @@
 vars:
 
   instances:
-    vm7:
-      instance_type: "t3.micro"
-      key_name: "tfm-key"
-      tags:
-        Name: "vm7"
-        Project: "delhivery"
+    # vm7:
+    #   instance_type: "t3.micro"
+    #   key_name: "tfm-key"
+    #   tags:
+    #     Name: "vm7"
+    #     Project: "delhivery"
