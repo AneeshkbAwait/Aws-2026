@@ -1,0 +1,36 @@
+name: "Aneesh - Github actions play"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+# define global variables
+env:
+  PROJECT_NAME: "zomato-project - global var"
+  ENVIRONMENT: "development  - global var"
+
+jobs:
+
+  build_job:
+    name: "aneesh - build job"
+    runs-on: ubuntu-latest
+    # define job level variables
+    env:
+      APP_NAME: "zomato-app - build job var"
+    outputs:
+      APP_VER: ${{ steps.set_version.outputs.version }}
+    steps:
+      
+    - name: "step1 - print common github variable"
+      run: |
+        echo "Hello - I am printing common GitHub variables"
+        echo "Repository: $GITHUB_REPOSITORY"
+        echo "Branch: $GITHUB_REF_NAME"
+        echo "Commit SHA: $GITHUB_SHA"
+        echo "Actor: $GITHUB_ACTOR"
+        echo "Runner OS: $RUNNER_OS"
+        echo "Project: $PROJECT_NAME"
+        echo "Environment: $ENVIRONMENT"
+        echo "App Name: $APP_NAME"
