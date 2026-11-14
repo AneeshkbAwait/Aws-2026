@@ -2,7 +2,10 @@ name: "To manage AWS Ec2 infrastructure - apply"
 
 on:
   push:
-    branches: ["master"]
+    branches: 
+      - "master"
+    paths:
+      - "tfmp-codes/**"
 
 jobs:
   deploy:
