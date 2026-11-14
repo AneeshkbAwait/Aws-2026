@@ -26,8 +26,8 @@ jobs:
   job_add:
     name: "Adding the numbers"
     runs-on: ubuntu-latest
-    env:
-      sum_env: ${{ steps.sum.outputs.Sum }} 
+    #env:
+      
     outputs:
       sum_out: ${{ steps.sum.outputs.Sum }} # setting output in add_job, so next jobs can call it via ${{ needs.job_add.outputs.sum_out }}
 
@@ -41,6 +41,13 @@ jobs:
       id: sum
       run: |
         bash .github/workflows/scripts/test-bash.sh $first_no $second_no
+
+    - name: "setting env variable as sum_in"  # Only for checking different scenarios
+      env:
+        sum_env: ${{ steps.sum.outputs.Sum }} 
+      shell: bash
+      run: |
+        echo "setting env variable sum_env done"
 
     - name: "Printing sum in next step"
       run: |
