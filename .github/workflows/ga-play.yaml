@@ -20,7 +20,7 @@ jobs:
     env:
       APP_NAME: "zomato-app - build job var"
     outputs:
-      APP_VER: ${{ steps.set_version.outputs.version }}
+      APP_VER: ${{ steps.set_version.outputs.VERSION }}
     steps:
       
     - name: "step1 - print common github variable"
@@ -69,6 +69,6 @@ jobs:
       run: |
         echo "Project name: $PROJECT_NAME"
         echo "Environment: $ENVIRONMENT"
-        echo "App Version: $ {{ needs.build_job.outputs.APP_VER }}"
+        echo "App Version: ${{ needs.build_job.outputs.APP_VER }}"
         echo "---------------------------------------------"
         echo "Github Repo: $GITHUB_REPOSITORY"
