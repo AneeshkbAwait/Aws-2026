@@ -1,5 +1,10 @@
 name: "Aneesh - Github actions play"
 
+#First example tried
+
+# eg for printing few Github avaiable environment variables, usage of $GITHUB_ENV (for variables to be avaialble on other steps in the same Job) &
+# $GITHUB_OUTPUT - to make variable available to other steps in the same job, and to other Jobs as well. 
+
 on:
   workflow_dispatch:
   #push:
