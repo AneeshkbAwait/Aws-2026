@@ -3,8 +3,8 @@ name: "Aneesh - Github actions play"
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
+    # branches:
+    #   - master
 
 # define global variables
 env:
@@ -34,3 +34,15 @@ jobs:
         echo "Project: $PROJECT_NAME"
         echo "Environment: $ENVIRONMENT"
         echo "App Name: $APP_NAME"
+
+    - name: "step2 - set app version variable"
+      run: |
+        echo "APP_VERSION: 1.1.0" >> $GITHUB_ENV
+        echo "Variable created -> APP_VESRION"
+
+    - name: "step3 - Print app version"
+      run: |
+        echo "Project: $PROJECT_NAME"
+        echo "Environment: $ENVIRONMENT"
+        echo "App name: $APP_NAME"
+        echo "App Version: $APP_VERSION"
