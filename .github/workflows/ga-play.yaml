@@ -2,7 +2,7 @@ name: "Aneesh - Github actions play"
 
 on:
   workflow_dispatch:
-  push:
+  #push:
     # branches:
     #   - master
 
@@ -14,7 +14,7 @@ env:
 jobs:
 
   build_job:
-    name: "aneesh - build job"
+    name: "aneesh - build job- job1"
     runs-on: ubuntu-latest
     # define job level variables
     env:
@@ -50,3 +50,23 @@ jobs:
         echo "App name: $APP_NAME"
         echo "App Version: $APP_VERSION"
         echo "App module: $APP_MOD"
+
+    - name: "step4 - setting variable output for next job"
+      id: set_version
+      run: |
+        echo "VERSION=$APP_VERSION" >> $GITHUB_OUTPUT
+        echo "Output variable created -> VERSION"
+        echo "TEST_OT=Job1" >> $GITHUB_OUTPUT
+        echo "Job variable created -> TEST_OT"
+
+  deploy_job:
+    name: "aneesh - deploy job -job2"
+    runs-on: ubuntu-latest
+    needs: build_job
+
+    steps:
+    - name: "job2 - step1 - read output variable"
+      run: |
+        echo "Project name: $PROJECT_NAME"
+        echo "Environment: $ENVIRONMENT"
+        echo "App Version: needs.build_job.outputs.APP_VER"
