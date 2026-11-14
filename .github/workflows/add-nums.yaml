@@ -26,8 +26,8 @@ jobs:
   job_add:
     name: "Adding the numbers"
     runs-on: ubuntu-latest
-    #env:
-
+    env:
+      sum_env: ${{ steps.sum.outputs.Sum }} 
     outputs:
       sum_out: ${{ steps.sum.outputs.Sum }} # setting output in add_job, so next jobs can call it via ${{ needs.job_add.outputs.sum_out }}
 
@@ -45,6 +45,7 @@ jobs:
     - name: "Printing sum in next step"
       run: |
         # echo "Sum in Step2 printing from env variable: $sum_out  ........" -> won't work because this is output variable
+        echo "Sum in Step2 printing from env variable -> sum_env: $sum_env  ........"
         echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........." # another step in the same job referring the output variable
 
   print_sum:
