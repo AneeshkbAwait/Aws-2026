@@ -40,9 +40,13 @@ jobs:
         echo "APP_VERSION=1.1.0" >> $GITHUB_ENV
         echo "Variable created -> APP_VESRION"
 
+        echo "APP_MOD=python" >> $GITHUB_ENV
+        echo "Variable created -> APP_MOD"
+
     - name: "step3 - Print app version"
       run: |
         echo "Project: $PROJECT_NAME"
         echo "Environment: $ENVIRONMENT"
         echo "App name: $APP_NAME"
         echo "App Version: $APP_VERSION"
+        echo "App module: $APP_MOD"
