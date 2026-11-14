@@ -69,4 +69,6 @@ jobs:
       run: |
         echo "Project name: $PROJECT_NAME"
         echo "Environment: $ENVIRONMENT"
-        echo "App Version: needs.build_job.outputs.APP_VER"
+        echo "App Version: $ {{ needs.build_job.outputs.APP_VER }}"
+        echo "---------------------------------------------"
+        echo "Github Repo: $GITHUB_REPOSITORY"
