@@ -30,10 +30,13 @@ jobs:
 
     steps:
 
+    - name: "Checkout repository - then only the repo and script file will be available st runner......."
+      uses: actions/checkout@v4
+
     - name: "Calculating sum"
       id: sum
       run: |
-        bash ./scripts/test-bash.sh $first_no $second_no
+        bash ./github/workflows/scripts/test-bash.sh $first_no $second_no
 
     - name: "Printing sum in next step"
       run: |
