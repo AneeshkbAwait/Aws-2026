@@ -36,7 +36,7 @@ jobs:
     - name: "Calculating sum"
       id: sum
       run: |
-        bash ./github/workflows/scripts/test-bash.sh $first_no $second_no
+        bash .github/workflows/scripts/test-bash.sh $first_no $second_no
 
     - name: "Printing sum in next step"
       run: |
