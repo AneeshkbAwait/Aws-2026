@@ -38,7 +38,7 @@ jobs:
     - name: "step4 - passing variables for next stage"
       id: step4
       run: |
-        echo "version: $app_version" >> $GITHUB_OUTPUT"
+        echo "version: $app_version" >> $GITHUB_OUTPUT
         echo "output environment passed for next job"
 
   deploy_job:
