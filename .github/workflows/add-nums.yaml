@@ -1,0 +1,51 @@
+name: Adding 2 numbers
+
+on:
+  workflow_dispatch:
+    inputs:
+      First_number:
+        type: number
+        default: 0
+        required: true
+        description: "First number for summation"
+      Second_number:
+        type: number
+        default: 0
+        required: true
+        description: "Second Number for summation"
+
+env:
+  first_no: ${{ inputs.First_number }}
+  second_no: ${{ inputs.Second_number}}
+
+jobs:
+
+  job_add:
+    name: "Adding the numbers"
+    runs-on: ubuntu-latest
+    #env:
+
+    outputs:
+      sum_out: ${{ steps.sum.outputs.Sum }}
+
+    steps:
+
+    - name: "Calculating sum"
+      id: sum
+      run: |
+        bash ./scripts/test-bash.sh $first_no $second_no
+
+    - name: "Printing sum in next step"
+      run: |
+        echo "Sum in Step2 printing from env variable: $sum_out  ........"
+        echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........."
+
+  print_sum:
+    name: "Print Sum in Another Job"
+    runs-on: ubuntu-latest
+    needs: job_add
+
+    steps:
+    - name: "Summation value in next Job step"
+      run: |
+        echo "Summation value in next Job step: ${{ needs.job_add.outputs.sum_out }} ....."
