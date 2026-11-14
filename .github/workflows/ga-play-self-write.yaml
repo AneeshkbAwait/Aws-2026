@@ -1,7 +1,11 @@
 name: "Aneesh - Play with Github Actions"
 
+# eg for printing few Github avaiable environment variables, usage of $GITHUB_ENV (for variables to be avaialble on other steps in the same Job) &
+# $GITHUB_OUTPUT - to make variable available to other steps in the same job, and to other Jobs as well. 
+# I wrote this myself after creating ga-play.yaml
+
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 env:
   project: zomato

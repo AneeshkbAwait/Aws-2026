@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - "tfmp-codes/**"
     types:
       - opened
       - synchronize
@@ -36,7 +38,4 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-
-      # - name: Terraform apply
-      #   run: terraform apply --auto-approve
     

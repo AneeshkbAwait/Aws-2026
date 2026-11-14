@@ -1,4 +1,7 @@
-name: Adding 2 numbers
+name: Adding 2 numbers - Via GitHub Actions
+
+# This workflow is an example for taking user inputs, how to pass variable values from stages in a job and how we can one job values to another 
+# job, etc.. And how can use shell scripts to process data with github actions
 
 on:
   workflow_dispatch:
@@ -26,10 +29,11 @@ jobs:
     #env:
 
     outputs:
-      sum_out: ${{ steps.sum.outputs.Sum }}
+      sum_out: ${{ steps.sum.outputs.Sum }} # setting output in add_job, so next jobs can call it via ${{ needs.job_add.outputs.sum_out }}
 
     steps:
-
+ 
+    # This is needed to clone the repo to runner, then only bash script file will get available in the runner environment
     - name: "Checkout repository - then only the repo and script file will be available st runner......."
       uses: actions/checkout@v4
 
@@ -41,12 +45,12 @@ jobs:
     - name: "Printing sum in next step"
       run: |
         # echo "Sum in Step2 printing from env variable: $sum_out  ........" -> won't work because this is output variable
-        echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........."
+        echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........." # another step in the same job referring the output variable
 
   print_sum:
     name: "Print Sum in Another Job"
     runs-on: ubuntu-latest
-    needs: job_add
+    needs: job_add  # For dependancy
 
     steps:
     - name: "Summation value in next Job step"
