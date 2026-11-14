@@ -21,6 +21,7 @@ jobs:
       APP_NAME: "zomato-app - build job var"
     outputs:
       APP_VER: ${{ steps.set_version.outputs.VERSION }}
+      test: ${{ steps.set_version.outputs.TEST_OT }}
     steps:
       
     - name: "step1 - print common github variable"
@@ -72,3 +73,4 @@ jobs:
         echo "App Version: ${{ needs.build_job.outputs.APP_VER }}"
         echo "---------------------------------------------"
         echo "Github Repo: $GITHUB_REPOSITORY"
+        echo "test value: ${{ needs.build_job.outputs.test}}"
