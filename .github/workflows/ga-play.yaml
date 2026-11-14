@@ -54,7 +54,7 @@ jobs:
     - name: "step4 - setting variable output for next job"
       id: set_version
       run: |
-        echo "VERSION=$APP_VERSION" >> $GITHUB_OUTPUT
+        echo "version=$APP_VERSION" >> $GITHUB_OUTPUT
         echo "Output variable created -> VERSION"
         echo "TEST_OT=Job1" >> $GITHUB_OUTPUT
         echo "Job variable created -> TEST_OT"
