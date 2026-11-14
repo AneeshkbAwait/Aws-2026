@@ -42,17 +42,9 @@ jobs:
       run: |
         bash .github/workflows/scripts/test-bash.sh $first_no $second_no
 
-    - name: "setting env variable as sum_in"  # Only for checking different scenarios
-      env:
-        sum_env: ${{ steps.sum.outputs.Sum }} 
-      shell: bash
-      run: |
-        echo "setting env variable sum_env done"
-
     - name: "Printing sum in next step"
       run: |
         # echo "Sum in Step2 printing from env variable: $sum_out  ........" -> won't work because this is output variable
-        echo "Sum in Step2 printing from env variable -> sum_env: $sum_env  ........"
         echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........." # another step in the same job referring the output variable
 
   print_sum:
