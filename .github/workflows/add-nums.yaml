@@ -40,7 +40,7 @@ jobs:
 
     - name: "Printing sum in next step"
       run: |
-        echo "Sum in Step2 printing from env variable: $sum_out  ........"
+        # echo "Sum in Step2 printing from env variable: $sum_out  ........" -> won't work because this is output variable
         echo "Sum in Step2 printing from steps output directly: ${{ steps.sum.outputs.Sum }}  ........."
 
   print_sum:
