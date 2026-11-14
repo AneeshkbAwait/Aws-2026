@@ -15,7 +15,7 @@ jobs:
     env:
       app: ui-app
     outputs:
-      app_ver: ${{ steps.step4.outputs.app_version }}
+      app_ver: ${{ steps.step4.outputs.version }}
     steps:
     - name: "step1 - printing some github variables"
       env:
