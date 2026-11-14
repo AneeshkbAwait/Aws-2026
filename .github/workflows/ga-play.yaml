@@ -37,7 +37,7 @@ jobs:
 
     - name: "step2 - set app version variable"
       run: |
-        echo "APP_VERSION: 1.1.0" >> $GITHUB_ENV
+        echo "APP_VERSION=1.1.0" >> $GITHUB_ENV
         echo "Variable created -> APP_VESRION"
 
     - name: "step3 - Print app version"
