@@ -33,7 +33,21 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan
+        run: |
+          |
+          terraform plan -no-color -out=tfplan
+
+          terraform show -no-color tfplan > terraform-plan.txt
+
+          {
+            echo "# AWS EC2 Infrastructure - Terraform Apply"
+            echo ""
+            echo "## Terraform Plan"
+            echo ""
+            echo '```terraform'
+            cat terraform-plan.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Terraform apply
         run: |
